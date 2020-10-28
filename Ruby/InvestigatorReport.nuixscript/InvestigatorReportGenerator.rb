@@ -270,6 +270,14 @@ class InvestigatorReportGenerator
 			
 			logMessage("\t\tSearching: #{query}")
 			summary_items = $current_case.searchUnsorted(query)
+			
+			# this fixes an error on 7.6 
+			# (TypeError) failed to coerce com.sun.proxy.$Proxy to java.util.List
+			if !NuixConnection.getCurrentNuixVersion.isAtLeast("8.0")
+				summary_items = summary_items.to_a
+			end
+			# end fix
+			
 			summary_report["hit_count"] = summary_items.size
 
 			if summary_items.size > 0
