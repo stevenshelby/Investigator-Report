@@ -602,6 +602,7 @@ public class ReportSettingsDialog extends JDialog {
 								tableSummaries.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 								scrollPane.setViewportView(tableSummaries);
 								tableSummaries.setModel(tableSummariesModel);
+								tableSummaries.setAutoCreateRowSorter(true);
 							}
 						}
 						btnAddRow.addActionListener(new ActionListener() {
